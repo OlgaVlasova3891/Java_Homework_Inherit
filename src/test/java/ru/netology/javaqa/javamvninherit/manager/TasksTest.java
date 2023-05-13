@@ -41,7 +41,7 @@ public class TasksTest {
     }
 
     @Test
-    public void testTrueMatchesForMeeting() {
+    public void testTrueMatchesForMeetingProject() {
         Meeting meeting = new Meeting(
                 555,
                 "Выкатка 3й версии приложения",
@@ -54,7 +54,32 @@ public class TasksTest {
     }
 
     @Test
-    public void testFalseMatchesForMeeting() {
+    public void testTrueMatchesForMeetingTopic() {
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+        boolean actual = meeting.matches("версии");
+        boolean expected = true;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testFalseMatchesForMeetingTopic() {
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+        boolean actual = meeting.matches("Версия");
+        boolean expected = false;
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testFalseMatchesForMeetingProject() {
         Meeting meeting = new Meeting(
                 555,
                 "Выкатка 3й версии приложения",
